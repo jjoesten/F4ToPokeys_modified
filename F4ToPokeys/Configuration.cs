@@ -183,6 +183,7 @@ namespace F4ToPokeys
             AddPololuMaestroCommand = new RelayCommand(executeAddPololuMaestro);
             AddDEDuinoCommand = new RelayCommand(executeAddDEDuino);
             AddArduinoGaugeCommand = new RelayCommand(executeAddArduinoGauge);
+            AddArduinoECMCommand = new RelayCommand(executeAddArduinoECM);
         }
 
         public void setOwner()
@@ -198,6 +199,9 @@ namespace F4ToPokeys
 
             foreach (ArduinoGauge arduinoGauge in ArduinoGaugeList)
                 arduinoGauge.SetOwner(this);
+
+            foreach (ArduinoECM arduinoECM in ArduinoECMList)
+                arduinoECM.SetOwner(this);
         }
 
         public void Dispose()
@@ -317,9 +321,7 @@ namespace F4ToPokeys
                 RaisePropertyChanged("ArduinoGaugeList");
             }
         }
-        #endregion
 
-        #region AddArduinoGaugeCommand
         [XmlIgnore]
         public RelayCommand AddArduinoGaugeCommand { get; private set; }
         private void executeAddArduinoGauge(object o)
@@ -327,6 +329,28 @@ namespace F4ToPokeys
             ArduinoGauge arduinoGauge = new ArduinoGauge();
             arduinoGauge.SetOwner(this);
             ArduinoGaugeList.Add(arduinoGauge);
+        }
+        #endregion
+
+        #region Arduino ECM
+        private ObservableCollection<ArduinoECM> arduinoECMList = new ObservableCollection<ArduinoECM>();
+        public ObservableCollection<ArduinoECM> ArduinoECMList
+        {
+            get { return arduinoECMList; }
+            set
+            {
+                arduinoECMList = value;
+                RaisePropertyChanged("ArduinoEMCList");
+            }
+        }
+
+        [XmlIgnore]
+        public RelayCommand AddArduinoECMCommand { get; private set; }
+        private void executeAddArduinoECM(object o)
+        {
+            ArduinoECM arduinoECM = new ArduinoECM();
+            arduinoECM.SetOwner(this);
+            ArduinoECMList.Add(arduinoECM);
         }
         #endregion
     }

@@ -61,6 +61,15 @@ namespace F4ToPokeys.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Arduino ECM.
+        /// </summary>
+        public static string AddArduinoECMButton {
+            get {
+                return ResourceManager.GetString("AddArduinoECMButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Arduino Gauge Driver.
         /// </summary>
         public static string AddArduinoGaugeDriverButton {
@@ -183,6 +192,24 @@ namespace F4ToPokeys.Translations {
         public static string ApplicationTitle {
             get {
                 return ResourceManager.GetString("ApplicationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arduino ECM.
+        /// </summary>
+        public static string ArduinoECMConfigCaption {
+            get {
+                return ResourceManager.GetString("ArduinoECMConfigCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not Found.
+        /// </summary>
+        public static string ArduinoECMDriverNotFoundError {
+            get {
+                return ResourceManager.GetString("ArduinoECMDriverNotFoundError", resourceCulture);
             }
         }
         
@@ -745,6 +772,24 @@ namespace F4ToPokeys.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove Arduino ECM {0}?.
+        /// </summary>
+        public static string RemoveArduinoECMCaption {
+            get {
+                return ResourceManager.GetString("RemoveArduinoECMCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove Arduino ECM?.
+        /// </summary>
+        public static string RemoveArduinoECMText {
+            get {
+                return ResourceManager.GetString("RemoveArduinoECMText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove Arduino Gauge Driver.
         /// </summary>
         public static string RemoveArduinoGaugeDriverCaption {
@@ -804,6 +849,15 @@ namespace F4ToPokeys.Translations {
         public static string RemoveDigitalOutputText {
             get {
                 return ResourceManager.GetString("RemoveDigitalOutputText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove matrix LED output ({0}, {1}) ?.
+        /// </summary>
+        public static string RemoveECMMatrixLedOutputText {
+            get {
+                return ResourceManager.GetString("RemoveECMMatrixLedOutputText", resourceCulture);
             }
         }
         

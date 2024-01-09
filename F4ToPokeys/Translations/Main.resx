@@ -582,4 +582,22 @@
   <data name="AddArduinoGaugeDriverButton" xml:space="preserve">
     <value>Add Arduino Gauge Driver</value>
   </data>
+  <data name="ArduinoECMConfigCaption" xml:space="preserve">
+    <value>Arduino ECM</value>
+  </data>
+  <data name="AddArduinoECMButton" xml:space="preserve">
+    <value>Add Arduino ECM</value>
+  </data>
+  <data name="RemoveArduinoECMCaption" xml:space="preserve">
+    <value>Remove Arduino ECM {0}?</value>
+  </data>
+  <data name="RemoveArduinoECMText" xml:space="preserve">
+    <value>Remove Arduino ECM?</value>
+  </data>
+  <data name="ArduinoECMDriverNotFoundError" xml:space="preserve">
+    <value>Not Found</value>
+  </data>
+  <data name="RemoveECMMatrixLedOutputText" xml:space="preserve">
+    <value>Remove matrix LED output ({0}, {1}) ?</value>
+  </data>
 </root>

@@ -93,11 +93,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ArduinoECM.cs" />
+    <Compile Include="ArduinoECMDriver.cs" />
+    <Compile Include="ArduinoECMEnumerator.cs" />
     <Compile Include="ArduinoGauge.cs" />
     <Compile Include="ArduinoGaugeDriver.cs" />
     <Compile Include="ArduinoGaugeEnumerator.cs" />
     <Compile Include="ArduinoGaugePoint.cs" />
     <Compile Include="ArduinoGaugeStepperMotor.cs" />
+    <Compile Include="ArduinoMatrixLed.cs" />
+    <Compile Include="ArduinoMatrixLedOutput.cs" />
     <Compile Include="DEDuino.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="FloatingPointTextBox.cs" />

@@ -12,7 +12,7 @@ namespace F4ToPokeys
             get
             {
                 if (singleton == null)
-                    singleton = new ArduinoGaugeEnumerator(); ;
+                    singleton = new ArduinoGaugeEnumerator();
                 return singleton;
             }
         }
