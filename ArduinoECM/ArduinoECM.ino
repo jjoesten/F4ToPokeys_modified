@@ -8,6 +8,7 @@
 */
 
 #include <CmdMessenger.h>
+#include <Button2.h>
 
 constexpr auto CLOCK_PIN = 3;
 constexpr auto LATCH_PIN = 4;
@@ -38,11 +39,27 @@ CmdMessenger cmdMessenger = CmdMessenger(Serial);
 
 byte lightMatrix[6] = { B00000000, B00000000, B00000000, B00000000, B00000000, B00000000 };
 
+Button2 oprButton;
+Button2 offButton;
+Button2 mode1Button;
+Button2 mode3Button;
+Button2 bitButton;
+Button2 resetButton;
+Button2 button1;
+Button2 button2;
+Button2 button3;
+Button2 button4;
+Button2 button5;
+Button2 buttonAlt;
+Button2 buttonFrm;
+Button2 buttonSpl;
+
 // List of recognized CmdMessenger callbacks
 enum {
 	kHandshakeRequest,
 	kHandshakeResponse,
 	kSetLed,
+	kAction,
 	kStatus,
 };
 
@@ -81,26 +98,65 @@ void setupPins()
 	pinMode(CLOCK_PIN, OUTPUT);
 	pinMode(DATA_PIN, OUTPUT);
 
-	pinMode(OFF_PIN, INPUT_PULLUP);
-	pinMode(OPR_PIN, INPUT_PULLUP);
-	pinMode(MODE1_PIN, INPUT_PULLUP);
-	pinMode(MODE3_PIN, INPUT_PULLUP);
-	pinMode(BIT_PIN, INPUT_PULLUP);
-	pinMode(RESET_PIN, INPUT_PULLUP);
-	pinMode(BUTTON_1_PIN, INPUT_PULLUP);
-	pinMode(BUTTON_2_PIN, INPUT_PULLUP);
-	pinMode(BUTTON_3_PIN, INPUT_PULLUP);
-	pinMode(BUTTON_4_PIN, INPUT_PULLUP);
-	pinMode(BUTTON_5_PIN, INPUT_PULLUP);
-	pinMode(BUTTON_ALT_PIN, INPUT_PULLUP);
-	pinMode(BUTTON_FRM_PIN, INPUT_PULLUP);
-	pinMode(BUTTON_SPL_PIN, INPUT_PULLUP);
+	//pinMode(OFF_PIN, INPUT_PULLUP);
+	//pinMode(OPR_PIN, INPUT_PULLUP);
+	//pinMode(MODE1_PIN, INPUT_PULLUP);
+	//pinMode(MODE3_PIN, INPUT_PULLUP);
+	//pinMode(BIT_PIN, INPUT_PULLUP);
+	//pinMode(RESET_PIN, INPUT_PULLUP);
+	//pinMode(BUTTON_1_PIN, INPUT_PULLUP);
+	//pinMode(BUTTON_2_PIN, INPUT_PULLUP);
+	//pinMode(BUTTON_3_PIN, INPUT_PULLUP);
+	//pinMode(BUTTON_4_PIN, INPUT_PULLUP);
+	//pinMode(BUTTON_5_PIN, INPUT_PULLUP);
+	//pinMode(BUTTON_ALT_PIN, INPUT_PULLUP);
+	//pinMode(BUTTON_FRM_PIN, INPUT_PULLUP);
+	//pinMode(BUTTON_SPL_PIN, INPUT_PULLUP);
+}
+
+void setupButtons()
+{
+	oprButton.begin(OPR_PIN);
+	offButton.begin(OFF_PIN);
+	mode1Button.begin(MODE1_PIN);
+	mode3Button.begin(MODE3_PIN);
+	bitButton.begin(BIT_PIN);
+	resetButton.begin(RESET_PIN);
+	button1.begin(BUTTON_1_PIN);
+	button2.begin(BUTTON_2_PIN);
+	button3.begin(BUTTON_3_PIN);
+	button4.begin(BUTTON_4_PIN);
+	button5.begin(BUTTON_5_PIN);
+	buttonAlt.begin(BUTTON_ALT_PIN);
+	buttonFrm.begin(BUTTON_FRM_PIN);
+	buttonSpl.begin(BUTTON_SPL_PIN);
+
+	oprButton.setPressedHandler(onPressedHandler);
+	oprButton.setReleasedHandler(onReleasedHandler);
+	offButton.setPressedHandler(onPressedHandler);
+	offButton.setReleasedHandler(onReleasedHandler);
+	mode1Button.setPressedHandler(onPressedHandler);
+	mode1Button.setReleasedHandler(onReleasedHandler);
+	mode3Button.setPressedHandler(onPressedHandler);
+	mode3Button.setReleasedHandler(onReleasedHandler);
+	bitButton.setPressedHandler(onPressedHandler);
+	resetButton.setPressedHandler(onPressedHandler);
+	button1.setPressedHandler(onPressedHandler);
+	button2.setPressedHandler(onPressedHandler);
+	button3.setPressedHandler(onPressedHandler);
+	button4.setPressedHandler(onPressedHandler);
+	button5.setPressedHandler(onPressedHandler);
+	buttonAlt.setPressedHandler(onPressedHandler);
+	buttonFrm.setPressedHandler(onPressedHandler);
+	buttonSpl.setPressedHandler(onPressedHandler);
 }
 
 // the setup function runs once when you press reset or power the board
 void setup() {
-	// Setup pins
+
 	setupPins();
+
+	setupButtons();
 
 	Serial.begin(57600);
 
@@ -119,7 +175,23 @@ void loop() {
 	int pwmValue = map(analogRead(DIM_PIN), 0, 1023, 230, 0);
 	analogWrite(PWM_PIN, pwmValue);
 
-  writeToRegisters();
+	writeToRegisters();
+
+	// Buttons
+	oprButton.loop();
+	offButton.loop();
+	mode1Button.loop();
+	mode3Button.loop();
+	bitButton.loop();
+	resetButton.loop();
+	button1.loop();
+	button2.loop();
+	button3.loop();
+	button4.loop();
+	button5.loop();
+	buttonAlt.loop();
+	buttonFrm.loop();
+	buttonSpl.loop();
 }
 
 String getSerialNumber() {
@@ -142,4 +214,17 @@ void allLightsOff() {
   for (int i = 0; i < 6; i++) {
     lightMatrix[i] = B00000000;
   }
+}
+
+void onPressedHandler(Button2& btn) {
+
+}
+
+void onReleasedHandler(Button2& btn) {
+	if (btn == oprButton || btn == offButton) {
+		// Stby pressed
+	}
+	else if (btn == mode1Button || btn == mode3Button) {
+		// Mode 2 pressed
+	}
 }

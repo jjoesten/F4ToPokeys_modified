@@ -24,6 +24,7 @@ namespace F4ToPokeys
             HandshakeRequest,
             HandshakeResponse,
             SetLed,
+            Action,
             Status,
         }
 
